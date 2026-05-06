@@ -31,3 +31,36 @@ function App() {
     }
 
   }, [selectedGenre]);
+
+  return (
+    <div>
+
+      <h1>Lista Film</h1>
+
+      <select
+        value={selectedGenre}
+        onChange={function (e) {
+          setSelectedGenre(e.target.value);
+        }}
+      >
+        <option value="">Tutti</option>
+        <option value="Fantascienza">Fantascienza</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Romantico">Romantico</option>
+        <option value="Azione">Azione</option>
+      </select>
+            <ul>
+        {filteredMovies.map(function (movie, index) {
+          return (
+            <li key={index}>
+              {movie.title} - {movie.genre}
+            </li>
+          );
+        })}
+      </ul>
+
+    </div>
+  );
+}
+
+export default App;
