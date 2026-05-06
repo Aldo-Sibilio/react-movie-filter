@@ -17,3 +17,17 @@ function App() {
 
   // stato film filtrati
   const [filteredMovies, setFilteredMovies] = useState(movies);
+
+  useEffect(function () {
+
+    if (selectedGenre === "") {
+      setFilteredMovies(movies);
+    } else {
+      const filtered = movies.filter(function (movie) {
+        return movie.genre === selectedGenre;
+      });
+
+      setFilteredMovies(filtered);
+    }
+
+  }, [selectedGenre]);
